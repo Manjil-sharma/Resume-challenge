@@ -1,20 +1,17 @@
-window.addEventListener('DOMContentLoaded', (event) => {
-    getVisitCount();
-})
+document.addEventListener('DOMContentLoaded', async () => {
+    const functionApiUrl = 'https://counter1.azurewebsites.net/api/getandupdatecounter?code=IaE6gG6-VMf5-OoYij0GoU6frsWafqmA79OP2mfX5U_HAzFuBTP1bQ%3D%3D';
 
-const functionApi = 'http://localhost:7071/api/GetAndUpdateCounter';
+    try {
+        const response = await fetch(functionApiUrl);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data. Status: ${response.status}`);
+        }
 
-const getVisitCount = () => {
-    let count = 30;
-    fetch(functionApi)
-        .then(response => response.json())
-        .then(response => {
-            console.log("Website called function API.");
-            count = response.count;
-            document.getElementById("counter").innerText = count;
-        })
-        .catch(error => {
-            console.log(error);
-        });
-    return count;
-}
+        const data = await response.json();
+        console.log("Website called function API.");
+        const count = data.count;
+        document.getElementById("counter").innerText = count;
+    } catch (error) {
+        console.error(error);
+    }
+});
