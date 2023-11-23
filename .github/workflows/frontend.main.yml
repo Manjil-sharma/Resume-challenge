@@ -28,7 +28,7 @@ jobs:
           inlineScript: |
             az cdn endpoint purge --content-paths "/*" --profile-name "azureresumeashwa" --name "azureresumeashwa" --resource-group "Azureresume"
 
-      # Azure logout
+      # Azure logout !
       - name: logout
         run: |
           az logout
