@@ -32,7 +32,7 @@ namespace Company.Function
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            // Increment the count by one 
+            // Increment the count
             counter.Count++;
 
             // Update the counter in Cosmos DB
